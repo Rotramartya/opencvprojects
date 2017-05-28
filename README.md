@@ -1,4 +1,4 @@
-// opencvprojects
+// opencvprojects----- disparity mapping code 
 
 #include "opencv2/core/core.hpp"
 
