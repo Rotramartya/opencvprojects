@@ -83,6 +83,8 @@ void conversion( float d)
 
 	int main(int argc, char* argv[])
 { 
+	int flag=0;
+
 	VideoCapture stream1(0);
 	VideoCapture stream2(1);
  
@@ -116,9 +118,9 @@ while(true){
 
 
 		 Mat Q;
-    Q=(Mat_<double>(4,4)<< 1., 0., 0., -2.9615028381347656e+02, 0., 1., 0., -2.3373317337036133e+02, 0.
-    ,0., 0., 5.6446880931501073e+02 ,0., 0., -1.1340974198400260e-01,
-		4.1658568844268817e+00);
+    Q=(Mat_<double>(4,4)<< 1., 0., 0., -2.5064871978759766e+02, 0., 1., 0.,
+       -2.3899789428710938e+02, 0., 0., 0., 6.7491086722346256e+02, 0.,
+       0., -1.3560081060673629e-01, 0.);
 
 	Q.convertTo(Q, CV_32F);
 	if (Q.cols != 4 || Q.rows != 4)
@@ -148,7 +150,11 @@ while(true){
 
 
 	}  
-			   	   
+		cout << min;
+		flag++;
+
+	if(flag==1000)	   
+	{	   
 
 		freopen ("myfile.txt","w",stdout);
 		cout << "Closest object is detected at a distance of   ";
@@ -156,7 +162,8 @@ while(true){
 		
 		fclose (stdout);
 		system("say -f myfile.txt"); 
-
+		flag=0;
+    }
 						   	    namedWindow("left",WINDOW_NORMAL);
 							    resizeWindow("left",600,600);
 
@@ -167,9 +174,9 @@ while(true){
 			           		   resizeWindow("disp",600,600);
 		imshow("left", img1);
 		imshow("right", img2);
-		//imshow("disp", disparity);
+		imshow("disp", disparity);
 	if (waitKey(5) >= 0)
 	break;
-         }
+    }
 	return(0);
 }
