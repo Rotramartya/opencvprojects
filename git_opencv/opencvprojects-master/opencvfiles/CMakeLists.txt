@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 3.5.1)
+project (disparity_image)
+find_package(OpenCV REQUIRED)
+add_executable(disparity_images git_disparity.cpp)
+target_link_libraries(disparity_image ${OpenCV_LIBS})
